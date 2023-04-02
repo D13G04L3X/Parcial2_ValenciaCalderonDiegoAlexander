@@ -11,11 +11,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Ticket\Details.cshtml" />
+    <Content Remove="Views\Ticket\Delete.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="Views\Ticket\Details.cshtml" />
+    <Compile Include="Views\Ticket\Delete.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
