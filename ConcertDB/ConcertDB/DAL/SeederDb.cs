@@ -20,11 +20,11 @@ namespace ConcertDB.DAL
 
         private async Task TicketAsync(){       //For register 50000 files
 
-            if (!_context.Tickets.Any()){
+            if (!_context.Ticket.Any()){
 
                 for (int i = 1; i <= 50000; i++){
 
-                    _context.Tickets.Add(new Ticket { IsUsed = false });
+                    _context.Ticket.Add(new Ticket { IsUsed = false });
                 }
             }
         }

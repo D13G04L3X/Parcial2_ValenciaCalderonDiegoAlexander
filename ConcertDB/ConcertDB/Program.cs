@@ -1,4 +1,5 @@
 using ConcertDB.DAL;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 

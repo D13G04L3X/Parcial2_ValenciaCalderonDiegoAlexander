@@ -3,9 +3,7 @@
     "",
     "\\ConcertDB",
     "\\ConcertDB\\ConcertDB",
-    "\\ConcertDB\\ConcertDB\\Pages",
-    "\\ConcertDB\\ConcertDB\\Properties",
-    "\\ConcertDB\\ConcertDB\\wwwroot"
+    "\\ConcertDB\\ConcertDB\\DAL"
   ],
   "SelectedNode": "\\ConcertDB\\ConcertDB\\Program.cs",
   "PreviewInSolutionExplorer": false

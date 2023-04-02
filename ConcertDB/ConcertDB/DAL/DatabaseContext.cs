@@ -1,4 +1,5 @@
 ﻿using ConcertDB.DAL.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace ConcertDB.DAL
 {
@@ -9,6 +10,12 @@ namespace ConcertDB.DAL
 
         }
 
-        public DbSet<Ticket> Tickets { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
+        public object Database { get; internal set; }
+
+        internal Task SaveChangesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
