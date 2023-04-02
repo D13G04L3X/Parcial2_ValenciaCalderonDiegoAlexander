@@ -11,14 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Remove="Views\Ticket\Delete.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Views\Ticket\Delete.cshtml" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml.cs" />
   </ItemGroup>
 

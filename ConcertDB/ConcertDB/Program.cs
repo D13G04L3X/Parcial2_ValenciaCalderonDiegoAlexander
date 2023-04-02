@@ -1,6 +1,5 @@
 using ConcertDB.DAL;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -29,6 +28,23 @@ void SeederData()
         service.SeederAsync().Wait();
     }
 }
+//void SeederData()         Esta forma es una aleternativa a la excepción del error
+//{
+//    IServiceScopeFactory? scopedFactory = app.Services.GetService<IServiceScopeFactory>();
+
+//    using (IServiceScope? scope = scopedfactory.CreateScope())
+//    {
+//        SeederDb? service = scope.ServiceProvider.GetService<SeederDb>();
+//        try
+//        {
+//            service.SeederAsync().Wait();
+//        }
+//        catch (Exception ex)
+//        {
+//            // Manejar la excepción aquí
+//        }
+//    }
+//}
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
