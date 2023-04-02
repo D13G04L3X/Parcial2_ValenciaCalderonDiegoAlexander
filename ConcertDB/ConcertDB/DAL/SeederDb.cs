@@ -14,17 +14,17 @@ namespace ConcertDB.DAL
         public async Task SeederAsync()             //It´s a possible solution, but in the moment realize test for code to SeederAsync
         {
             await _context.Database.EnsureCreatedAsync();
-            await TicketAsync();
+            await PopulTicketsAsync();
             await _context.SaveChangesAsync();
         }
 
-        private async Task TicketAsync(){       //For register 50000 files
+        private async Task PopulTicketsAsync(){       //For register 50000 files
 
-            if (!_context.Ticket.Any()){
+            if (!_context.Tickets.Any()){
 
                 for (int i = 1; i <= 50000; i++){
 
-                    _context.Ticket.Add(new Ticket { IsUsed = false });
+                    _context.Tickets.Add(new Ticket { IsUsed = false });
                 }
             }
         }

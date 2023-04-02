@@ -10,12 +10,6 @@ namespace ConcertDB.DAL
 
         }
 
-        public DbSet<Ticket> Ticket { get; set; }
-        public object Database { get; internal set; }
-
-        internal Task SaveChangesAsync()
-        {
-            throw new NotImplementedException();
-        }
+        public DbSet<Ticket> Tickets { get; set; }
     }
 }

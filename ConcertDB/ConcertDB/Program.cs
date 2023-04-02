@@ -1,14 +1,15 @@
 using ConcertDB.DAL;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-builder.Services.AddDbContext<DatabaseContext>(o =>
+builder.Services.AddDbContext<DatabaseContext>(option =>
 {
-    o.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
+    option.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
 });
 
 builder.Services.AddRazorPages().AddRazorRuntimeCompilation();

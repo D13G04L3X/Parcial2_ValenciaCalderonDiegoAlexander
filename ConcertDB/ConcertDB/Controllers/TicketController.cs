@@ -1,12 +1,15 @@
-﻿using ConcertDB.DAL.Entities;
+﻿using System;
+using ConcertDB.DAL.Entities;
 using ConcertDB.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore.Storage;
+using ConcertDB.DAL;
 
 namespace ConcertDB.Controllers
 {
@@ -14,9 +17,9 @@ namespace ConcertDB.Controllers
     {
         #region Constructor
 
-        private readonly DbContext _context;
+        private readonly DatabaseContext _context;
 
-        public TicketController(DbContext context)
+        public TicketController(DatabaseContext context)
         {
             _context = context;
         }
@@ -27,7 +30,7 @@ namespace ConcertDB.Controllers
 
         private async Task<Ticket> GetTicketById(Guid? id)
         {
-            Ticket ticket = await _context.Ticket
+            Ticket ticket = await _context.Tickets
                 .FirstOrDefaultAsync(ticket => ticket.Id == id);
             return ticket;
         }
@@ -39,8 +42,8 @@ namespace ConcertDB.Controllers
         // GET: Tickets
         public async Task<IActionResult> Index()
         {
-            return _context.Ticket != null ?
-              View(await _context.Ticket.ToListAsync()) :
+            return _context.Tickets != null ?
+              View(await _context.Tickets.ToListAsync()) :
               Problem("Entity set 'DatabaseContext.Tickets'  is null.");
         }
 
@@ -53,7 +56,7 @@ namespace ConcertDB.Controllers
         [HttpPost]
         public ActionResult Validate(int ticketId)
         {
-            var ticket = _context.Ticket.Find(ticketId);
+            var ticket = _context.Tickets.Find(ticketId);
 
             if (ticket == null)
             {
@@ -74,13 +77,13 @@ namespace ConcertDB.Controllers
                 ViewBag.SuccessMessage = "Boleta validada correctamente";
             }
 
-            return View("Index", _context.Ticket.ToList());
+            return View("Index", _context.Tickets.ToList());
         }
 
         // GET: Tickets/Details/5
         public async Task<IActionResult> Details(int id)
         {
-            var ticket = await _context.Ticket.FindAsync(id);
+            var ticket = await _context.Tickets.FindAsync(id);
 
             if (ticket == null)
             {
@@ -144,7 +147,7 @@ namespace ConcertDB.Controllers
             }
 
             // Buscar la boleta en la base de datos
-            Ticket ticket = DbContext.Ticket.Find(id);
+            Ticket ticket = _context.Tickets.Find(id);
             if (ticket == null)
             {
                 ViewBag.Mensaje = "Boleta no válida";
@@ -178,7 +181,7 @@ namespace ConcertDB.Controllers
         public ActionResult ValidateTickets(string idTicket, string entrance)
         {
             // Buscamos la boleta en la base de datos
-            var ticket = DbContext.ConcertBD.FirstOrDefault(b => b.ID == idTicket);
+            var ticket = _context.Tickets.Find(idTicket);
 
             if (ticket == null)
             {
@@ -203,7 +206,7 @@ namespace ConcertDB.Controllers
 
             return View("Index");
         }
-
+        #endregion
     }
 }
 
