@@ -11,6 +11,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Ticket\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Views\Ticket\Details.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Views\Shared\_Layout.cshtml.cs" />
   </ItemGroup>
 
